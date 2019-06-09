@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Hifi - die Wiener Gitarrenorganisation</title>
+
+<style>
+
+* {
+	box-sizing: border-box; 
+}
+
+body {
+	margin: 0;
+	font-family: sans-serif;
+	background-color: rgb(235, 235, 235)
+}
+
+.container {
+	max-width: 60rem;
+	margin: 0 auto;
+	background-color: white;
+}
+
+article {
+	width: 70%;
+	float: left;
+	padding: 1rem;
+}
+
+aside {
+	width: 30%;
+	float: left;
+	padding: 1rem;
+}
+
+aside img {
+	max-width: 100%;
+}
+
+header{
+	height: 5rem;
+	padding: 1rem;
+}
+
+footer {
+	height: 6rem;
+	padding: 1rem;
+	clear: both;
+	background-color: rgb(0,145,255);
+	color: white;
+}
+
+footer p {
+	color: white;	
+}
+h1 {
+	color: rgb(0,145,255);
+	font-size: 2rem;
+}
+
+h2 {
+	color: rgb(0,60,100);
+}
+
+p {
+	color: rgb(40,40,40);
+}
+
+#hifi-logo {
+	height: 3rem;
+}
+
+
+/* Responsive Navigation */
+
+#burger-icon {
+	height: 0.8rem;
+}
+
+nav {
+	overflow: hidden;
+	background-color: rgb(0,60,100);
+}
+
+nav a {
+	float: left;
+	display: block;
+	color: rgb(145,215,255);
+	text-align: center;
+	padding: 0.9rem;
+	text-decoration: none;
+	font-size: 1rem;
+}
+
+nav a:hover {
+	background-color: rgb(145,215,255);
+	color: rgb(0,60,100);
+}
+
+nav a.active {
+	background-color: rgb(0,145,255);
+	color: white;
+}
+
+nav .burger {
+	display: none;
+}
+
+
+/* Behälter für responsive Youtube-Video */
+
+.youtube-responsive {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+
+.youtube-responsive iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+/* Video wird im Hintergrund abgespielt */
+
+#hintergrund-video {
+	width: 100%;
+}
+
+.video-kasten {
+	position: relative;
+	display: inline-block;
+}
+
+.video-kasten .abspieloverlay {
+	position: absolute;
+	z-index: 999;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	top: 15%;
+	width: 70%;
+	padding: 0.5rem;
+	background: rgba(255, 255, 255, 0.8);
+	border-radius: 1rem;
+}
+
+#play-button {
+	width: 8rem;
+	font-size: 0.8rem;
+	padding: 0.5rem;
+	border: none;
+	background: rgb(0,145,255);
+	color: white;
+	cursor: pointer;
+	border-radius: 1rem;
+}
+
+#play-button:hover {
+  background: rgb(145,215,255);
+  color: rgb(0,145,255);
+}
+
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* Parallax Effekt */
+.parallax { 
+  /* The image used */
+  background-image: url("images/grosse-gitarre.jpg");
+
+  /* Set a specific height */
+  height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+@media screen and (max-width: 750px) {
+	.breite-nav a:not(:first-child) {display: none;}
+	.breite-nav a.burger {
+		float: right;
+		display: block;
+	}
+	.breite-nav.burger {position: relative;}
+	.breite-nav.burger .burger {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.breite-nav.burger a {
+		float: none;
+		display: block;
+		text-align: left;
+	}
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+	<img src="images/hifi-logo.svg" id="hifi-logo" alt="Hifi - die Wiener Gitarrenorganisation">
+</header>
+
+<nav class="breite-nav" id="seitennav">
+  <a href="#home" class="active">Home</a>
+  <a href="#courses">Kursprogramm</a>
+  <a href="#guitars">Gitarren</a>
+  <a href="#service">Diensleistungen</a>
+  <a href="#contact">Kontakt</a>
+  <a href="javascript:void(0);" class="burger" onclick="burgersichtbarkeit()">
+    <img src="images/menu.svg" id="burger-icon">
+  </a>
+</nav>
+
+<div class="parallax"></div>
+
+<article>
+	<h1>Willkommen bei Hifi!</h1>
+	<h2>Kurse bei der Wiener Gitarrenorganisation</h2>
+	
+	<p>Diese Website wurde im Rahmen eines Arbeitsauftrags zum Modul Webdesign des Diplomlehrgangs Mediengestaltung am WIFI Wien. Die Site besteht aus:</p>
+	<ul>
+		<li>Einer Seite mit Responsive-Layout</li>
+		<li>Einem Burger-Menu, das erscheint, wenn man des Viewports reduziert</li>
+		<li>Einen responsive Slider mit Gitarrenbildern</li>
+		<li>Einem responsive eingebauten Youtube-Video</li>
+		<li>Einem MP4-Video, das als Hintergrund eingebaut ist</li>
+	</ul>
+	<p><a href="http://ptstest.com/wifi/wd-arbeitsauftrag.zip">Hier den Quelltext mit allen Assets runterladen.</a></p>
+	<p>&nbsp;</p>
+
+	<h2>Slider</h2>
+	<p>Bitte auf die blauen Punkte unterhalb des Bildes klicken. Der Slider besteht aus Code von dieser <a href="https://ebene11.com/imageslider-ohne-javascript.html" target="_blank">Quelle</a>.</p>
+
+	<!-- Slideshow container -->
+	<div class="slideshow-container">
+
+	<!-- Full-width images with number and caption text -->
+	<div class="mySlides fade">
+		<div class="numbertext">1 / 3</div>
+		<img src="images/gitarre1.jpg" style="width:100%">
+		<div class="text">Erste Gitarre</div>
+	</div>
+
+	<div class="mySlides fade">
+		<div class="numbertext">2 / 3</div>
+		<img src="images/gitarre2.jpg" style="width:100%">
+		<div class="text">Zweite Gitarre</div>
+	</div>
+
+	<div class="mySlides fade">
+		<div class="numbertext">3 / 3</div>
+			<img src="images/gitarre3.jpg" style="width:100%">
+			<div class="text">Dritte Gitarre</div>
+		</div>
+
+		<!-- Next and previous buttons -->
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+	</div>
+	<br>
+
+	<!-- The dots/circles -->
+	<div style="text-align:center">
+		<span class="dot" onclick="currentSlide(1)"></span> 
+		<span class="dot" onclick="currentSlide(2)"></span> 
+		<span class="dot" onclick="currentSlide(3)"></span> 
+	</div>
+
+	<p>&nbsp;</p>
+	
+	<h2>Responsive Youtube-Video</h2>
+	<p>Achtung, in diesem Video wird Musik gespielt.</p>
+	<div class="youtube-responsive">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/cIukq450xiM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+	<p>&nbsp;</p>
+
+	<h2>Hintergrund-Video</h2>
+	<p>Dieses Hintergrund-Video braucht eine Weile zum laden, weil es als MP4-Datei im Ordner mit den anderen Assets liegt. Das Video ist als Hintergrund einbaut und hat darauf eine transparente Overlay-Box.</p>
+	<div class="video-kasten">
+		<video autoplay muted loop id="hintergrund-video">
+			<source src="video/gittarren-hintergrund.mp4" type="video/mp4">
+			Sorry, Ihr Browser kann leider keine HTML5-Videos abspielen.
+		</video>
+		<div class="abspieloverlay">
+			<p>Bitte kurz warten, damit das Video komplett geladen ist. Mit dem Button Video anhalten oder fortsetzen.</p>
+			<button id="play-button" onclick="playpausevideo()">Pause</button>
+		</div>
+	</div>
+
+</article>
+
+<aside>
+	<p>Alle Bilder wurden von <a href="https://stock.adobe.com/de/" target="_blank">Adobe Stock</a> lizensiert.</p>
+	<p><img src="images/gitarre2.jpg" alt="Mann mit Gitarre"></p>
+	<p><img src="images/gitarre3.jpg" alt="Wieder ein Mann mit Gitarre"></p>
+	<p><img src="images/gitarre4.jpg" alt="Viele Gitarren"></p>
+</aside>
+
+<footer>
+	<p>In diesen Footer werden interessante Links aufgelistet.</p>
+</footer>
+
+
+</div>
+
+<script>
+	function burgersichtbarkeit() {
+		var x = document.getElementById("seitennav");
+		if (x.className === "breite-nav") {
+			x.className += " burger";
+		} else {
+			x.className = "breite-nav";
+		}
+	}
+
+	var video = document.getElementById("hintergrund-video");
+	var btn = document.getElementById("play-button");
+
+	function playpausevideo() {
+		if (video.paused) {
+			video.play();
+			btn.innerHTML = "Pause";
+		} else {
+			video.pause();
+			btn.innerHTML = "Play";
+		}
+	}
+
+	var slideIndex = 1;
+	showSlides(slideIndex);
+
+	// Next/previous controls
+	function plusSlides(n) {
+	  showSlides(slideIndex += n);
+	}
+
+	// Thumbnail image controls
+	function currentSlide(n) {
+	  showSlides(slideIndex = n);
+	}
+
+	function showSlides(n) {
+		var i;
+		var slides = document.getElementsByClassName("mySlides");
+		var dots = document.getElementsByClassName("dot");
+		if (n > slides.length) {slideIndex = 1} 
+		if (n < 1) {slideIndex = slides.length}
+		for (i = 0; i < slides.length; i++) {
+		    slides[i].style.display = "none"; 
+		}
+		for (i = 0; i < dots.length; i++) {
+		    dots[i].className = dots[i].className.replace(" active", "");
+		}
+		slides[slideIndex-1].style.display = "block"; 
+		dots[slideIndex-1].className += " active";
+	}
+
+
+</script>
+
+
+</body>
+</html>
+
